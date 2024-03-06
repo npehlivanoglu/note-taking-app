@@ -24,6 +24,17 @@ function App() {
     setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
   };
 
+  const updateNote = (id, newText) => {
+    setNotes(
+      notes.map((note) => {
+        if (note.id === id) {
+          return { ...note, text: newText };
+        }
+        return note;
+      })
+    );
+  };
+
   const filteredNotes = activeTag
     ? notes.filter((note) => note.tags && note.tags.includes(activeTag))
     : notes;
@@ -80,13 +91,11 @@ function App() {
       />
       <div className="main-content">
         <NoteInput addNote={addNote} />
-        <NoteList notes={filteredNotes} removeNote={removeNote} />
+        <NoteList notes={filteredNotes} removeNote={removeNote} updateNote={updateNote} />
         <div>
           <button onClick={handleExportNotes}>Notları Dışa Aktar</button>
           <button>
-            <label htmlFor="fileInput">
-              Notları İçe Aktar
-            </label>
+            <label htmlFor="fileInput">Notları İçe Aktar</label>
             <input
               type="file"
               id="fileInput"
