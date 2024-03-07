@@ -93,9 +93,9 @@ function App() {
         <NoteInput addNote={addNote} />
         <NoteList notes={filteredNotes} removeNote={removeNote} updateNote={updateNote} />
         <div>
-          <button onClick={handleExportNotes}>Notları Dışa Aktar</button>
+          <button onClick={handleExportNotes}><b>Export notes</b></button>
           <button>
-            <label htmlFor="fileInput">Notları İçe Aktar</label>
+            <label htmlFor="fileInput"><b>Import notes</b></label>
             <input
               type="file"
               id="fileInput"
